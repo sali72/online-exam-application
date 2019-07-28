@@ -1,0 +1,69 @@
+entity Teacher {
+	teacherFirstName String,
+    teacherLastName String,
+    gender Gender,
+    birthDate Date,
+}
+entity Course {
+	courseTitle String,
+    startDate Date,
+    endDate Date,
+}
+entity Student {
+	studentFirstName String,
+    studentLastName String,
+    gender Gender,
+    birthDate Date,
+}
+entity Exam {
+	examTitle String,
+    details String,
+    requiredTime Date,
+    totalMark Double,
+    maxTotalMark Double
+}
+entity Question {
+	title String,
+	description String,
+}
+
+entity QuestionBank {
+	
+}
+enum Gender {
+    Male, Female
+}
+
+relationship OneToOne {
+	QuestionBank{course} to Course
+    Course{questionBank} to QuestionBank
+}
+
+
+relationship ManyToMany {
+	Course{student} to Student{course}
+    Student{course} to Course{student}
+}
+relationship OneToMany {
+	Teacher{course} to Course
+    Exam{course} to Course
+    Exam{question} to Question
+    QuestionBank{question} to Question
+}
+relationship ManyToOne {
+	Course{teacher} to Teacher
+    Course{exam} to Exam
+    
+}
+// Set pagination options
+//paginate Student with infinite-scroll
+//paginate Exam with pagination
+
+// Use Data Transfert Objects (DTO)
+// dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl 
+
+// Set an angular suffix
+// angularSuffix * with mySuffix
