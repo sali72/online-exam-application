@@ -1,0 +1,63 @@
+<div>
+    <h2 id="page-heading">
+        <span>Teachers</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-teacher" [routerLink]="['/teacher/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create new Teacher
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="teachers?.length === 0">
+        <span>No teachers found</span>
+    </div>
+    <div class="table-responsive" *ngIf="teachers?.length > 0">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Teacher First Name</span></th>
+            <th><span>Teacher Last Name</span></th>
+            <th><span>Gender</span></th>
+            <th><span>Birth Date</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let teacher of teachers ;trackBy: trackId">
+                <td><a [routerLink]="['/teacher', teacher.id, 'view' ]">{{teacher.id}}</a></td>
+                <td>{{teacher.teacherFirstName}}</td>
+                <td>{{teacher.teacherLastName}}</td>
+                <td>{{teacher.gender}}</td>
+                <td>{{teacher.birthDate}}</td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/teacher', teacher.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/teacher', teacher.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', 'teacher', { outlets: { popup: teacher.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

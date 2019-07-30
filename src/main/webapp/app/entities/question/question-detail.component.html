@@ -1,0 +1,43 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="question">
+            <h2><span>Question</span> {{question.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Title</span></dt>
+                <dd>
+                    <span>{{question.title}}</span>
+                </dd>
+                <dt><span>Description</span></dt>
+                <dd>
+                    <span>{{question.description}}</span>
+                </dd>
+                <dt><span>Exam</span></dt>
+                <dd>
+                    <div *ngIf="question.exam">
+                        <a [routerLink]="['/exam', question.exam?.id, 'view']">{{question.exam?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span>Question Bank</span></dt>
+                <dd>
+                    <div *ngIf="question.questionBank">
+                        <a [routerLink]="['/question-bank', question.questionBank?.id, 'view']">{{question.questionBank?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/question', question.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

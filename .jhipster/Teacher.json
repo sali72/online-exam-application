@@ -1,0 +1,39 @@
+{
+    "name": "Teacher",
+    "fields": [
+        {
+            "fieldName": "teacherFirstName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "teacherLastName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "gender",
+            "fieldType": "Gender",
+            "fieldValues": "Male,Female"
+        },
+        {
+            "fieldName": "birthDate",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "course",
+            "otherEntityRelationshipName": "teacher",
+            "relationshipName": "course"
+        }
+    ],
+    "changelogDate": "20190730114557",
+    "entityTableName": "teacher",
+    "dto": "no",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}
