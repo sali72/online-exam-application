@@ -1,0 +1,21 @@
+{
+    "name": "QuestionBank",
+    "fields": [],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "question",
+            "otherEntityRelationshipName": "questionBank",
+            "relationshipName": "question"
+        }
+    ],
+    "changelogDate": "20190801105713",
+    "entityTableName": "question_bank",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}
