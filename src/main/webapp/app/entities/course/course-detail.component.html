@@ -1,0 +1,59 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="course">
+            <h2><span>Course</span> {{course.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Course Title</span></dt>
+                <dd>
+                    <span>{{course.courseTitle}}</span>
+                </dd>
+                <dt><span>Start Date</span></dt>
+                <dd>
+                    <span>{{course.startDate}}</span>
+                </dd>
+                <dt><span>End Date</span></dt>
+                <dd>
+                    <span>{{course.endDate}}</span>
+                </dd>
+                <dt><span>Teacher</span></dt>
+                <dd>
+                    <div *ngIf="course.teacherId">
+                        <a [routerLink]="['/teacher', course.teacherId, 'view']">{{course.teacherId}}</a>
+                    </div>
+                </dd>
+                <dt><span>Question Bank</span></dt>
+                <dd>
+                    <div *ngIf="course.questionBankId">
+                        <a [routerLink]="['/question-bank', course.questionBankId, 'view']">{{course.questionBankId}}</a>
+                    </div>
+                </dd>
+                <dt><span>Student</span></dt>
+                <dd>
+                    <span *ngFor="let student of course.students; let last = last">
+                        <a [routerLink]="['/student', student?.id, 'view' ]">{{student.id}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+                <dt><span>Exam</span></dt>
+                <dd>
+                    <div *ngIf="course.examId">
+                        <a [routerLink]="['/exam', course.examId, 'view']">{{course.examId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/course', course.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
