@@ -1,0 +1,71 @@
+<div>
+    <h2 id="page-heading">
+        <span>Questions</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-question" [routerLink]="['/question/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create a new Question
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="questions?.length === 0">
+        <span>No questions found</span>
+    </div>
+    <div class="table-responsive" *ngIf="questions?.length > 0">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Title</span></th>
+            <th><span>Description</span></th>
+            <th><span>Exam</span></th>
+            <th><span>Question Bank</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let question of questions ;trackBy: trackId">
+                <td><a [routerLink]="['/question', question.id, 'view' ]">{{question.id}}</a></td>
+                <td>{{question.title}}</td>
+                <td>{{question.description}}</td>
+                <td>
+                    <div *ngIf="question.examId">
+                        <a [routerLink]="['/exam', question.examId , 'view' ]" >{{question.examId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="question.questionBankId">
+                        <a [routerLink]="['/question-bank', question.questionBankId , 'view' ]" >{{question.questionBankId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/question', question.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/question', question.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/question', { outlets: { popup: question.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

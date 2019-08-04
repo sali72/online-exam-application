@@ -1,0 +1,42 @@
+{
+    "name": "Exam",
+    "fields": [
+        {
+            "fieldName": "examTitle",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "details",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "requiredTime",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "totalMark",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "maxTotalMark",
+            "fieldType": "Double"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "question",
+            "otherEntityRelationshipName": "exam",
+            "relationshipName": "question"
+        }
+    ],
+    "changelogDate": "20190804085434",
+    "entityTableName": "exam",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}
