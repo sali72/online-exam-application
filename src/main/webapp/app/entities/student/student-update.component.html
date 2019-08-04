@@ -1,0 +1,59 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-student-heading">Create or edit a Student</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_studentFirstName">Student First Name</label>
+                    <input type="text" class="form-control" name="studentFirstName" id="field_studentFirstName"
+                           formControlName="studentFirstName"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_studentLastName">Student Last Name</label>
+                    <input type="text" class="form-control" name="studentLastName" id="field_studentLastName"
+                           formControlName="studentLastName"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_gender">Gender</label>
+                    <select class="form-control" name="gender" formControlName="gender" id="field_gender">
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_birthDate">Birth Date</label>
+                    <input type="text" class="form-control" name="birthDate" id="field_birthDate"
+                           formControlName="birthDate"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_studentCode">Student Code</label>
+                    <input type="text" class="form-control" name="studentCode" id="field_studentCode"
+                           formControlName="studentCode"/>
+                    <div *ngIf="editForm.get('studentCode').invalid && (editForm.get('studentCode').dirty || editForm.get('studentCode').touched)">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="field_courses">Course</label>
+                    <select class="form-control" id="field_courses" multiple name="courses" formControlName="courses">
+                        <option [ngValue]="getSelected(editForm.get('courses').value, courseOption)" *ngFor="let courseOption of courses; trackBy: trackCourseById">{{courseOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
