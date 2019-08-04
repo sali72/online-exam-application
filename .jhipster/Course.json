@@ -1,0 +1,58 @@
+{
+    "name": "Course",
+    "fields": [
+        {
+            "fieldName": "courseTitle",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "startDate",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "endDate",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "questionBank",
+            "otherEntityRelationshipName": "course",
+            "relationshipName": "questionBank",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "teacher",
+            "otherEntityRelationshipName": "course",
+            "relationshipName": "teacher",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "exam",
+            "otherEntityRelationshipName": "course",
+            "relationshipName": "exam",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "student",
+            "otherEntityRelationshipName": "course",
+            "relationshipName": "student",
+            "otherEntityField": "id",
+            "ownerSide": true
+        }
+    ],
+    "changelogDate": "20190804085432",
+    "entityTableName": "course",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

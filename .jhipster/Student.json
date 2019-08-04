@@ -1,0 +1,48 @@
+{
+    "name": "Student",
+    "fields": [
+        {
+            "fieldName": "studentFirstName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "studentLastName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "gender",
+            "fieldType": "Gender",
+            "fieldValues": "Male,Female"
+        },
+        {
+            "fieldName": "birthDate",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "studentCode",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "unique"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "course",
+            "otherEntityRelationshipName": "student",
+            "relationshipName": "course",
+            "otherEntityField": "id",
+            "ownerSide": false
+        }
+    ],
+    "changelogDate": "20190804085433",
+    "entityTableName": "student",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}
