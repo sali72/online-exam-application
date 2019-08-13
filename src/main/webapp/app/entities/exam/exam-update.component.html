@@ -1,0 +1,56 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-exam-heading">Create or edit a Exam</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_examTitle">Exam Title</label>
+                    <input type="text" class="form-control" name="examTitle" id="field_examTitle"
+                           formControlName="examTitle"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_details">Details</label>
+                    <input type="text" class="form-control" name="details" id="field_details"
+                           formControlName="details"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_requiredTime">Required Time</label>
+                    <input type="text" class="form-control" name="requiredTime" id="field_requiredTime"
+                           formControlName="requiredTime"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_totalMark">Total Mark</label>
+                    <input type="number" class="form-control" name="totalMark" id="field_totalMark"
+                           formControlName="totalMark"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_maxTotalMark">Max Total Mark</label>
+                    <input type="number" class="form-control" name="maxTotalMark" id="field_maxTotalMark"
+                           formControlName="maxTotalMark"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_course">Course</label>
+                    <select class="form-control" id="field_course" name="course" formControlName="courseId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="courseOption.id" *ngFor="let courseOption of courses; trackBy: trackCourseById">{{courseOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
