@@ -1,0 +1,49 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="exam">
+            <h2><span>Exam</span> {{exam.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Exam Title</span></dt>
+                <dd>
+                    <span>{{exam.examTitle}}</span>
+                </dd>
+                <dt><span>Details</span></dt>
+                <dd>
+                    <span>{{exam.details}}</span>
+                </dd>
+                <dt><span>Required Time</span></dt>
+                <dd>
+                    <span>{{exam.requiredTime}}</span>
+                </dd>
+                <dt><span>Total Mark</span></dt>
+                <dd>
+                    <span>{{exam.totalMark}}</span>
+                </dd>
+                <dt><span>Max Total Mark</span></dt>
+                <dd>
+                    <span>{{exam.maxTotalMark}}</span>
+                </dd>
+                <dt><span>Course</span></dt>
+                <dd>
+                    <div *ngIf="exam.courseId">
+                        <a [routerLink]="['/course', exam.courseId, 'view']">{{exam.courseId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/exam', exam.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
